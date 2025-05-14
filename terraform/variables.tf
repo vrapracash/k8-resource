@@ -23,3 +23,37 @@ variable "security_group_ids" {
 variable "spot_price" {
     default = "0.03"
 }
+
+variable "sg_name" {
+    default =  "allow_ssh"
+}
+
+variable "from_port" {
+    default = "22"
+    type = number
+}
+
+variable "to_port" {
+    default = 22
+    type = number
+}
+
+variable "protocol" {
+    default = "tcp"
+}
+
+variable "ingress_cidr" {
+    type = list(string)
+    default = ["0.0.0.0/0"]
+}
+
+variable "tags" {
+    type = map #optional
+    default = {
+        Name = "backend"
+        Project = "expense"
+        Component = "backend"
+        Environment = "DEV"
+        Terraform = "true"
+    }
+}
